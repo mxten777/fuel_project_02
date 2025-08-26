@@ -13,7 +13,7 @@ const MobileBottomNav = () => {
 
   return (
     <>
-      <nav className="fixed bottom-0 left-0 w-full bg-navy-dark text-white flex justify-around items-center py-2 shadow-lg z-50 md:hidden">
+  <nav className="fixed bottom-0 left-0 w-full bg-navy-dark text-white flex justify-around items-center py-2 shadow-lg z-50 md:hidden">
         {navItems.map((item, idx) => (
           <button
             key={idx}
