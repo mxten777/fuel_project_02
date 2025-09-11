@@ -14,28 +14,28 @@ const fakeData = {
 
 export default function Dashboard() {
   return (
-    <div className="w-full max-w-5xl mx-auto p-8 bg-white/90 dark:bg-navy/95 rounded-3xl shadow-2xl mt-8">
-      <h2 className="text-3xl font-bold text-center mb-8 text-navy dark:text-white drop-shadow-lg">통합 대시보드</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+    <div className="w-full max-w-md xs:max-w-xl sm:max-w-2xl md:max-w-4xl lg:max-w-5xl mx-auto p-4 xs:p-6 sm:p-8 md:p-12 bg-white/90 dark:bg-navy/95 rounded-3xl shadow-2xl mt-4 xs:mt-6 sm:mt-8 transition-colors duration-500">
+      <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-center mb-4 xs:mb-6 sm:mb-8 text-navy dark:text-white drop-shadow-lg leading-tight transition-colors duration-500">통합 대시보드</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 xs:gap-6 sm:gap-8 mb-4 xs:mb-6 sm:mb-8">
         {/* 월별 주유량 - 막대그래프 (최대높이 100px) */}
-        <div className="bg-btn-green rounded-xl p-6 shadow text-center">
-          <div className="text-2xl font-bold text-navy mb-2">월별 주유량</div>
+  <div className="bg-btn-green dark:bg-green-900/60 rounded-xl p-6 shadow text-center transition-colors duration-500 animate-fadein hover:scale-105 hover:shadow-2xl focus-within:scale-105 focus-within:shadow-2xl" style={{ animationDelay: '0.12s' }} tabIndex={0}>
+          <div className="text-2xl font-bold text-navy dark:text-green-100 mb-2 transition-colors duration-500">월별 주유량</div>
           <div className="flex items-end justify-center gap-2 h-32">
             {(() => {
               const max = Math.max(...fakeData.fuel);
               return fakeData.fuel.map((v, i) => (
                 <div key={i} className="flex flex-col items-center">
                   <div className="w-6 md:w-8 bg-blue-400 rounded-t-lg transition-all duration-300" style={{height: `${(v / max) * 100}px`, maxHeight: '100px'}}></div>
-                  <span className="text-xs text-navy mt-1">{fakeData.month[i]}</span>
+                  <span className="text-xs text-navy dark:text-green-100 mt-1 transition-colors duration-500">{fakeData.month[i]}</span>
                 </div>
               ));
             })()}
           </div>
-          <div className="mt-4 text-navy text-lg font-semibold">최고: {Math.max(...fakeData.fuel)}L</div>
+          <div className="mt-4 text-navy dark:text-green-100 text-lg font-semibold transition-colors duration-500">최고: {Math.max(...fakeData.fuel)}L</div>
         </div>
         {/* 월별 매출 - 선형그래프 */}
-        <div className="bg-btn-blue rounded-xl p-6 shadow text-center">
-          <div className="text-2xl font-bold text-navy mb-2">월별 매출</div>
+  <div className="bg-btn-blue dark:bg-blue-900/60 rounded-xl p-6 shadow text-center transition-colors duration-500 animate-fadein hover:scale-105 hover:shadow-2xl focus-within:scale-105 focus-within:shadow-2xl" style={{ animationDelay: '0.18s' }} tabIndex={0}>
+          <div className="text-2xl font-bold text-navy dark:text-blue-100 mb-2 transition-colors duration-500">월별 매출</div>
           <svg viewBox="0 0 220 120" className="w-full h-32 mb-2">
             {/* 선형 그래프 */}
             <polyline
@@ -53,11 +53,11 @@ export default function Dashboard() {
               <text key={m} x={20 + i * 30} y={115} fontSize="10" textAnchor="middle" fill="#1e293b">{m}</text>
             ))}
           </svg>
-          <div className="mt-2 text-navy text-lg font-semibold">최고: {Math.max(...fakeData.sales).toLocaleString()}만원</div>
+          <div className="mt-2 text-navy dark:text-blue-100 text-lg font-semibold transition-colors duration-500">최고: {Math.max(...fakeData.sales).toLocaleString()}만원</div>
         </div>
         {/* 월별 방문 고객 - 도넛그래프 */}
-        <div className="bg-btn-pink rounded-xl p-6 shadow text-center flex flex-col items-center">
-          <div className="text-2xl font-bold text-navy mb-2">유종별 비율</div>
+  <div className="bg-btn-pink dark:bg-pink-900/60 rounded-xl p-6 shadow text-center flex flex-col items-center transition-colors duration-500 animate-fadein hover:scale-105 hover:shadow-2xl focus-within:scale-105 focus-within:shadow-2xl" style={{ animationDelay: '0.24s' }} tabIndex={0}>
+          <div className="text-2xl font-bold text-navy dark:text-pink-100 mb-2 transition-colors duration-500">유종별 비율</div>
           <svg width="100" height="100" viewBox="0 0 42 42" className="mb-2">
             {(() => {
               let acc = 0;
@@ -86,23 +86,23 @@ export default function Dashboard() {
           </svg>
           <div className="flex justify-center gap-2 mb-2">
             {fakeData.oilType.map((d) => (
-              <span key={d.type} className="flex items-center gap-1 text-xs text-navy"><span style={{background:d.color, width:10, height:10, borderRadius:5, display:'inline-block'}}></span>{d.type}</span>
+              <span key={d.type} className="flex items-center gap-1 text-xs text-navy dark:text-pink-100 transition-colors duration-500"><span style={{background:d.color, width:10, height:10, borderRadius:5, display:'inline-block'}}></span>{d.type}</span>
             ))}
           </div>
-          <div className="text-navy text-lg font-semibold">총 방문: 1,000명</div>
+          <div className="text-navy dark:text-pink-100 text-lg font-semibold transition-colors duration-500">총 방문: 1,000명</div>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-        <div className="bg-btn-yellow rounded-xl p-6 shadow text-center">
-          <div className="text-xl font-bold text-navy mb-2">실시간 주유소 상태</div>
+  <div className="bg-btn-yellow dark:bg-yellow-900/60 rounded-xl p-6 shadow text-center transition-colors duration-500 animate-fadein hover:scale-105 hover:shadow-2xl focus-within:scale-105 focus-within:shadow-2xl" style={{ animationDelay: '0.30s' }} tabIndex={0}>
+          <div className="text-xl font-bold text-navy dark:text-yellow-100 mb-2 transition-colors duration-500">실시간 주유소 상태</div>
           <div className="flex flex-col items-center gap-2">
             <span className="text-4xl">⛽</span>
-            <span className="text-navy text-lg">정상 운영 중</span>
+            <span className="text-navy dark:text-yellow-100 text-lg transition-colors duration-500">정상 운영 중</span>
           </div>
         </div>
-        <div className="bg-navy-light rounded-xl p-6 shadow text-center">
-          <div className="text-xl font-bold text-white mb-2">알림 및 예측 리포트</div>
-          <ul className="text-white text-left list-disc list-inside">
+  <div className="bg-navy-light dark:bg-navy/80 rounded-xl p-6 shadow text-center transition-colors duration-500 animate-fadein hover:scale-105 hover:shadow-2xl focus-within:scale-105 focus-within:shadow-2xl" style={{ animationDelay: '0.36s' }} tabIndex={0}>
+          <div className="text-xl font-bold text-white dark:text-blue-100 mb-2 transition-colors duration-500">알림 및 예측 리포트</div>
+          <ul className="text-white dark:text-blue-100 text-left list-disc list-inside transition-colors duration-500">
             <li>7월 매출 예상: <span className="font-bold">5,200만원</span></li>
             <li>7월 주유량 예상: <span className="font-bold">2,000L</span></li>
             <li>고객 증가 추세: <span className="font-bold">+15%</span></li>

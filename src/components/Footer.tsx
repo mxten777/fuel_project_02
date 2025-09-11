@@ -1,14 +1,29 @@
+
 const Footer = () => (
-  <footer className="bg-navy-dark text-white py-8 px-4 flex flex-col md:flex-row justify-between items-center">
-    <div className="mb-4 md:mb-0">
-      <div className="font-bold">(주)창원이엔지</div>
+  <footer
+    className="bg-navy-dark dark:bg-navy/95 text-white py-6 xs:py-8 sm:py-10 px-2 xs:px-4 sm:px-8 w-full grid grid-cols-1 md:flex md:flex-row justify-between items-center gap-4 xs:gap-6 sm:gap-8 transition-colors duration-500 animate-fadein-up"
+    aria-label="사이트 정보 및 앱 다운로드"
+  >
+    <div className="mb-2 xs:mb-4 md:mb-0 text-sm xs:text-base sm:text-lg text-white dark:text-blue-100 transition-colors duration-500 animate-fadein">
+      <div className="font-bold text-base xs:text-lg sm:text-xl">(주)창원이엔지</div>
       <div>대표: 오창원 | 사업자등록번호: 110-86-07662</div>
       <div>경기도 성남시 중원구 사기막골로 45번길 14, 502호</div>
       <div>전화: 010-5923-8879</div>
     </div>
-    <div className="flex flex-col items-center gap-2">
-      <a href="#" className="underline">개인정보처리방침</a>
-      <button className="bg-blue-500 px-4 py-2 rounded-full font-semibold mt-2">앱 다운로드</button>
+    <div className="flex flex-col items-center gap-1 xs:gap-2 animate-fadein-up">
+      <a
+        href="#"
+        className="underline text-xs xs:text-sm sm:text-base text-white dark:text-blue-100 transition-colors duration-500"
+        aria-label="개인정보처리방침"
+      >
+        개인정보처리방침
+      </a>
+      <button
+        className="bg-blue-500 dark:bg-blue-900 px-3 xs:px-4 py-1 xs:py-2 rounded-full font-semibold mt-1 xs:mt-2 text-xs xs:text-sm sm:text-base text-white dark:text-blue-100 transition-colors duration-500 animate-scalein"
+        aria-label="앱 다운로드"
+      >
+        앱 다운로드
+      </button>
     </div>
   </footer>
 );

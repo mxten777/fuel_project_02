@@ -13,15 +13,15 @@ const MobileBottomNav = () => {
 
   return (
     <>
-  <nav className="fixed bottom-0 left-0 w-full bg-navy-dark text-white flex justify-around items-center py-2 shadow-lg z-50 md:hidden">
+  <nav className="fixed bottom-0 left-0 w-full bg-navy-dark text-white flex justify-around items-center py-1 xs:py-2 shadow-lg z-50 md:hidden px-1 xs:px-2">
         {navItems.map((item, idx) => (
           <button
             key={idx}
-            className="flex flex-col items-center focus:outline-none"
+            className="flex flex-col items-center focus:outline-none px-1 xs:px-2"
             onClick={() => item.label === '기능' ? setMenuOpen(true) : null}
           >
-            <span className="text-xl mb-1">{item.icon}</span>
-            <span className="text-xs">{item.label}</span>
+            <span className="text-base xs:text-lg sm:text-xl mb-0.5 xs:mb-1">{item.icon}</span>
+            <span className="text-[10px] xs:text-xs sm:text-sm">{item.label}</span>
           </button>
         ))}
       </nav>

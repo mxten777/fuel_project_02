@@ -1,26 +1,33 @@
-import HeroSection from './components/HeroSection';
-import IntroSection from './components/IntroSection';
-import FeaturesSection from './components/FeaturesSection';
-import ReviewSection from './components/ReviewSection';
-import CTASection from './components/CTASection';
-import Footer from './components/Footer';
-import DarkModeToggle from './components/DarkModeToggle';
-import MobileBottomNav from './components/MobileBottomNav';
-import DesktopTopNav from './components/DesktopTopNav';
-import BusinessMenuModal from './components/BusinessMenuModal';
+import HeroSection from './components/organisms/HeroSection';
+import FeaturesSection from './components/organisms/FeaturesSection';
+import ReviewSection from './components/organisms/ReviewSection';
+import CTASection from './components/organisms/CTASection';
+import BusinessMenuModal from './components/molecules/BusinessMenuModal';
 import Dashboard from './components/Dashboard';
 import KPIDashboard from './components/KPIDashboard';
-import { useState } from 'react';
+import DarkModeToggle from './components/atoms/DarkModeToggle';
+import DesktopTopNav from './components/organisms/DesktopTopNav';
+import Footer from './components/organisms/Footer';
+import MobileBottomNav from './components/organisms/MobileBottomNav';
+
+
+import ThemeSelector from './components/ThemeSelector';
+import { useUIStore } from './store/uiStore';
 
 
 
 function App() {
-  const [showDashboard, setShowDashboard] = useState(false);
-  const [showKPI, setShowKPI] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const {
+    menuOpen, setMenuOpen,
+    showDashboard, setShowDashboard,
+    showKPI, setShowKPI
+  } = useUIStore();
   return (
-    <div className="bg-navy min-h-screen flex flex-col items-center dark:bg-navy-dark">
+    <div className="bg-navy min-h-screen flex flex-col items-center dark:bg-navy-dark" style={{ fontFamily: "var(--theme-font)" }}>
       <DesktopTopNav onMenuClick={() => setMenuOpen(true)} />
+      <div className="fixed top-4 right-4 z-50 hidden xs:block">
+        <ThemeSelector />
+      </div>
       {/* 기능구성 버튼 샘플 */}
       <div className="flex gap-4 p-8 flex-wrap justify-center">
         <button className="bg-btn-green text-navy font-bold px-4 py-2 rounded-lg shadow">운영관리</button>
@@ -45,12 +52,11 @@ function App() {
         <>
           <DarkModeToggle />
           <HeroSection />
-          <IntroSection />
           <FeaturesSection />
           <ReviewSection />
           <CTASection />
           <Footer />
-          <MobileBottomNav />
+          <MobileBottomNav onMenuClick={() => setMenuOpen(true)} />
           <BusinessMenuModal open={menuOpen} onClose={() => setMenuOpen(false)} />
         </>
       )}
