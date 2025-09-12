@@ -5,13 +5,13 @@ import CTASection from './components/organisms/CTASection';
 import BusinessMenuModal from './components/molecules/BusinessMenuModal';
 import Dashboard from './components/Dashboard';
 import KPIDashboard from './components/KPIDashboard';
-import DarkModeToggle from './components/atoms/DarkModeToggle';
+// ...existing code...
 import DesktopTopNav from './components/organisms/DesktopTopNav';
 import Footer from './components/organisms/Footer';
 import MobileTopNav from './components/MobileTopNav';
 
 
-import ThemeSelector from './components/ThemeSelector';
+// ...existing code...
 import { useUIStore } from './store/uiStore';
 
 
@@ -22,6 +22,12 @@ function App() {
     showDashboard, setShowDashboard,
     showKPI, setShowKPI
   } = useUIStore();
+
+  // 심플 다크모드 토글
+  const handleDarkModeToggle = () => {
+    document.documentElement.classList.toggle('dark');
+  };
+
   return (
   <div className="min-h-[100dvh] w-full flex flex-col" style={{ fontFamily: "var(--theme-font)" }}>
       {/* Desktop Nav: md 이상에서만 보임 */}
@@ -32,9 +38,14 @@ function App() {
       <div className="md:hidden w-full">
         <MobileTopNav />
       </div>
-      <div className="fixed top-4 right-4 z-50 hidden xs:block">
-        <ThemeSelector />
-      </div>
+      {/* 다크모드 토글 버튼 (오른쪽 상단 고정, PC에서 업무메뉴와 겹치지 않게 top-20) */}
+      <button
+  className="fixed bottom-4 right-4 z-40 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full p-2 shadow hover:scale-110 transition md:top-20 md:bottom-auto md:right-4 md:z-40"
+        onClick={handleDarkModeToggle}
+        aria-label="다크모드 토글"
+      >
+        🌙/☀️
+      </button>
       {/* 기능구성 버튼 샘플 */}
       <div className="flex gap-4 p-8 flex-wrap justify-center w-full">
         <button className="bg-btn-green text-navy font-bold px-4 py-2 rounded-lg shadow">운영관리</button>
@@ -57,7 +68,7 @@ function App() {
       )}
       {!showDashboard && !showKPI && (
         <>
-          <DarkModeToggle />
+          {/* ...existing code... */}
           <HeroSection />
           <FeaturesSection />
           <ReviewSection />

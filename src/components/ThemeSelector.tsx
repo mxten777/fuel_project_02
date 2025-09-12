@@ -15,6 +15,7 @@ const fontOptions = [
 
 const ThemeSelector = () => {
   const { theme, setTheme } = useTheme();
+  console.log('[ThemeSelector] theme:', theme);
 
   const handleModeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setTheme({ ...theme, mode: e.target.value as Theme["mode"] });

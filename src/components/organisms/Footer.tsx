@@ -11,7 +11,7 @@ const Footer = () => (
         <a href="#" className="underline text-xs sm:text-sm text-blue-200 hover:text-yellow-200 mt-1">개인정보처리방침</a>
       </div>
       <div className="flex flex-col items-center gap-1">
-        <img src="/src/assets/ai_iot.png" alt="AI IoT Logo" className="w-12 h-12 object-contain rounded shadow bg-white p-1" onError={e => { e.currentTarget.style.display = 'none'; }} />
+  <img src="/baikal_logo.png" alt="BAIKAL AI Logo" className="w-12 h-12 object-contain rounded shadow bg-white p-1" onError={e => { e.currentTarget.style.display = 'none'; }} />
         <span className="text-xs text-blue-100">© 2025 Changwon ENG Smart Service Consortium.</span>
       </div>
     </div>

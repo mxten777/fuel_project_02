@@ -8,7 +8,7 @@ const DesktopTopNav = ({ onMenuClick }: { onMenuClick: () => void }) => (
     <div style={{position:'absolute',top:0,left:0,background:'purple',color:'#fff',fontWeight:'bold',zIndex:1000,padding:'2px 8px',fontSize:'14px'}}>DesktopTopNav</div>
     <div className="flex items-center gap-3 min-w-0 flex-shrink-0 animate-fadein">
       <img
-        src="/src/assets/ai_iot.png"
+  src="/baikal_logo.png"
         alt="Changwon ENG 로고"
         className="w-12 h-12 object-contain flex-shrink-0 bg-white rounded shadow"
         aria-label="Changwon ENG 로고"

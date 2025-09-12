@@ -21,16 +21,29 @@ const ThemeContext = createContext<{
   setTheme: () => {},
 });
 
-export const useTheme = () => useContext(ThemeContext);
+export const useTheme = () => {
+  const ctx = useContext(ThemeContext);
+  console.log('[useTheme] ThemeContext:', ThemeContext, 'ctx:', ctx);
+  return ctx;
+};
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
+  console.log('[ThemeProvider] ThemeContext:', ThemeContext);
   const [theme, setTheme] = useState<Theme>(defaultTheme);
+  console.log('[ThemeProvider] theme:', theme);
 
   // Tailwind 변수 및 다크모드 적용
   React.useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme.mode === "dark");
+    if (theme.mode === "dark") {
+      document.documentElement.classList.add("dark");
+      console.log("[ThemeProvider] dark class added");
+    } else {
+      document.documentElement.classList.remove("dark");
+      console.log("[ThemeProvider] dark class removed");
+    }
     document.documentElement.style.setProperty("--theme-color", theme.color);
     document.documentElement.style.setProperty("--theme-font", theme.font);
+    console.log("[ThemeProvider] theme.mode:", theme.mode);
   }, [theme]);
 
   return (
