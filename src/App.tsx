@@ -8,7 +8,7 @@ import KPIDashboard from './components/KPIDashboard';
 import DarkModeToggle from './components/atoms/DarkModeToggle';
 import DesktopTopNav from './components/organisms/DesktopTopNav';
 import Footer from './components/organisms/Footer';
-import MobileBottomNav from './components/organisms/MobileBottomNav';
+import MobileTopNav from './components/MobileTopNav';
 
 
 import ThemeSelector from './components/ThemeSelector';
@@ -23,13 +23,20 @@ function App() {
     showKPI, setShowKPI
   } = useUIStore();
   return (
-    <div className="bg-navy min-h-screen flex flex-col items-center dark:bg-navy-dark" style={{ fontFamily: "var(--theme-font)" }}>
-      <DesktopTopNav onMenuClick={() => setMenuOpen(true)} />
+  <div className="min-h-[100dvh] w-full flex flex-col" style={{ fontFamily: "var(--theme-font)" }}>
+      {/* Desktop Nav: md 이상에서만 보임 */}
+      <div className="hidden md:block w-full">
+        <DesktopTopNav onMenuClick={() => setMenuOpen(true)} />
+      </div>
+      {/* Mobile Nav: md 미만에서만 보임 (상단) */}
+      <div className="md:hidden w-full">
+        <MobileTopNav />
+      </div>
       <div className="fixed top-4 right-4 z-50 hidden xs:block">
         <ThemeSelector />
       </div>
       {/* 기능구성 버튼 샘플 */}
-      <div className="flex gap-4 p-8 flex-wrap justify-center">
+      <div className="flex gap-4 p-8 flex-wrap justify-center w-full">
         <button className="bg-btn-green text-navy font-bold px-4 py-2 rounded-lg shadow">운영관리</button>
         <button className="bg-btn-blue text-navy font-bold px-4 py-2 rounded-lg shadow">매출정산</button>
         <button className="bg-btn-yellow text-navy font-bold px-4 py-2 rounded-lg shadow">재고관리</button>
@@ -38,13 +45,13 @@ function App() {
       </div>
       {showDashboard && (
         <>
-          <Dashboard />
+          <Dashboard fullWidth />
           <button className="mt-4 px-6 py-2 bg-navy text-white rounded-lg shadow hover:bg-navy-dark" onClick={() => setShowDashboard(false)}>닫기</button>
         </>
       )}
       {showKPI && (
         <>
-          <KPIDashboard />
+          <KPIDashboard fullWidth />
           <button className="mt-4 px-6 py-2 bg-navy text-white rounded-lg shadow hover:bg-navy-dark" onClick={() => setShowKPI(false)}>닫기</button>
         </>
       )}
@@ -56,7 +63,6 @@ function App() {
           <ReviewSection />
           <CTASection />
           <Footer />
-          <MobileBottomNav onMenuClick={() => setMenuOpen(true)} />
           <BusinessMenuModal open={menuOpen} onClose={() => setMenuOpen(false)} />
         </>
       )}

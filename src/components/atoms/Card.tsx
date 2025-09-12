@@ -20,14 +20,13 @@ const Card = ({
   animation = "animate-fadein",
 }: CardProps) => (
   <div
-    className={
-      `flex flex-col items-center bg-white/80 dark:bg-navy/80 text-navy dark:text-blue-100 rounded-2xl p-2 xs:p-3 sm:p-8 shadow-xl border border-blue-100 dark:border-navy-light/30 backdrop-blur-md min-w-0 w-full max-w-xs mx-auto transition-all transition-colors duration-500 ${animation} hover:scale-105 hover:shadow-2xl focus-within:scale-105 focus-within:shadow-2xl ${className}`
-    }
+    className={`flex flex-col items-center w-full h-full min-w-0 transition-all duration-500 ${animation} ${className} 
+      hover:scale-[1.03] active:scale-95 hover:shadow-xl focus:scale-[1.03] focus:shadow-xl cursor-pointer`}
     style={style}
     tabIndex={tabIndex}
     aria-label={ariaLabel}
   >
-    {icon && <span className="mb-2 text-3xl xs:text-4xl sm:text-5xl drop-shadow-lg">{icon}</span>}
+    {icon && <span className="mb-2 text-3xl xs:text-4xl sm:text-5xl">{icon}</span>}
     {children}
   </div>
 );

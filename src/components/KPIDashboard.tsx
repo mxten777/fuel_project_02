@@ -16,15 +16,16 @@ const kpiTableData = [
   { name: "신규회원", value: 45, target: 50, prev: 38, unit: "명" },
 ];
 
-export default function KPIDashboard() {
+type KPIDashboardProps = { fullWidth?: boolean };
+export default function KPIDashboard({ fullWidth }: KPIDashboardProps) {
   return (
-  <div className="w-full max-w-md xs:max-w-xl sm:max-w-2xl md:max-w-3xl mx-auto p-2 xs:p-3 sm:p-6 md:p-8 bg-white/90 dark:bg-navy/95 rounded-3xl shadow-2xl mt-2 xs:mt-3 sm:mt-8 transition-colors duration-500">
-  <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-center mb-2 xs:mb-3 sm:mb-4 md:mb-8 text-navy dark:text-white drop-shadow-lg leading-tight transition-colors duration-500">KPI 달성 비교</h2>
+    <div className="w-full p-0 m-0 bg-transparent">
+  <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold text-center mb-2 xs:mb-3 sm:mb-4 md:mb-8 text-navy dark:text-white leading-tight transition-colors duration-500">KPI 달성 비교</h2>
       {/* KPI 비교 표 (상단) */}
-      <div className="mb-2 xs:mb-4 sm:mb-6 md:mb-10">
+  <div className="mb-0">
         <h3 className="text-sm xs:text-base sm:text-lg md:text-xl font-bold text-navy dark:text-white mb-1 xs:mb-2 sm:mb-3 md:mb-4 transition-colors duration-500">KPI 비교표</h3>
         <div className="overflow-x-auto">
-          <table className="min-w-[320px] xs:min-w-[380px] sm:min-w-[440px] w-full border border-navy-light dark:border-navy/40 rounded-xl bg-white dark:bg-navy-light text-center text-[10px] xs:text-[11px] sm:text-xs md:text-base transition-colors duration-500">
+          <table className="min-w-[320px] xs:min-w-[380px] sm:min-w-[440px] w-full border border-navy-light dark:border-navy/40 bg-white dark:bg-navy-light text-center text-[10px] xs:text-[11px] sm:text-xs md:text-base transition-colors duration-500">
             <thead>
               <tr className="bg-btn-blue border-b border-navy-light">
                 <th className="px-1 xs:px-2 sm:px-4 py-1 xs:py-2">KPI</th>
@@ -58,7 +59,7 @@ export default function KPIDashboard() {
         </div>
       </div>
       {/* KPI 카드 내용 (하단) */}
-  <div className="grid grid-cols-1 gap-2 xs:gap-3 sm:grid-cols-2 sm:gap-6 md:gap-8">
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-0">
         <svg width="0" height="0">
           <defs>
             <linearGradient id="grad-blue" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -115,7 +116,7 @@ export default function KPIDashboard() {
           return (
             <div
               key={kpi.name}
-              className="bg-white dark:bg-navy-light rounded-xl p-3 xs:p-4 sm:p-8 shadow-xl flex flex-col relative overflow-visible min-h-[180px] xs:min-h-[220px] sm:min-h-[340px] transition-all animate-fadein hover:scale-105 hover:shadow-2xl focus-within:scale-105 focus-within:shadow-2xl"
+              className="bg-white dark:bg-navy-light p-4 flex flex-col relative overflow-visible min-h-[180px] xs:min-h-[220px] sm:min-h-[340px] transition-all animate-fadein"
               style={{ animationDelay: `${0.1 + idx * 0.08}s` }}
               tabIndex={0}
             >
