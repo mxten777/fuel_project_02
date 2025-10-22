@@ -1,35 +1,27 @@
-// Moved to ../organisms/FeaturesSection.tsx
+import React from 'react';
+import Card from './atoms/Card';
 
 const features = [
-  { title: "무인주유", icon: "⛽" },
-  { title: "스마트 재고", icon: "📦" },
-  { title: "멤버십", icon: "💳" },
-  { title: "화상회의 운영", icon: "🎥" },
+  { title: '무인주유', icon: '⛽' },
+  { title: '스마트 재고', icon: '📦' },
+  { title: '멤버십', icon: '💳' },
+  { title: '통합 리포트', icon: '📊' },
 ];
 
 const FeaturesSection = () => (
-  <section className="py-8 xs:py-12 sm:py-16 md:py-20 bg-gradient-to-b from-navy-dark/90 to-navy-light/80 dark:from-navy-dark/95 dark:to-navy w-full flex flex-col items-center transition-colors duration-500">
-  <div className="w-full max-w-md xs:max-w-xl sm:max-w-2xl md:max-w-4xl mx-auto flex flex-col items-center px-2 xs:px-4 sm:px-8 md:px-0">
-  <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 xs:mb-6 sm:mb-10 text-white drop-shadow-lg tracking-tight leading-tight text-center transition-colors duration-500">주요 기능</h2>
-      <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-2 xs:gap-4 sm:gap-8 w-full">
+  <section className="w-full bg-gradient-to-b from-navy-dark/90 to-navy-light/80 dark:from-navy-dark/95 dark:to-navy">
+    <div className="container mx-auto px-4 py-10 sm:py-14 md:py-18">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6 text-white text-center">주요 기능</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
         {features.map((f, idx) => (
-          <React.Fragment key={idx}>
-            <Card
-              style={{ animationDelay: `${0.1 + idx * 0.08}s` }}
-              tabIndex={0}
-            >
-              <span className="text-3xl xs:text-4xl sm:text-5xl mb-2 xs:mb-3 drop-shadow-lg">{f.icon}</span>
-              <span className="font-bold text-base xs:text-lg sm:text-xl md:text-2xl drop-shadow text-center">{f.title}</span>
-            </Card>
-          </React.Fragment>
+          <Card key={idx} className="p-5 text-center" style={{ animationDelay: `${0.08 + idx * 0.06}s` }} tabIndex={0}>
+            <div className="text-4xl mb-3">{f.icon}</div>
+            <div className="font-semibold text-lg text-white">{f.title}</div>
+          </Card>
         ))}
-import React from "react";
-import Card from "./atoms/Card";
       </div>
     </div>
   </section>
 );
 
 export default FeaturesSection;
-import Card from "./ui/Card";
-import React from "react";

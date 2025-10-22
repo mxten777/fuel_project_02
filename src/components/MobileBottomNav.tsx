@@ -34,6 +34,10 @@ const MobileBottomNav = () => {
             <button
               key={idx}
               ref={btnRef}
+              type="button"
+              aria-label={item.label === '기능' ? 'Open business menu' : item.label}
+              aria-haspopup={item.label === '기능' ? 'dialog' : undefined}
+              aria-expanded={item.label === '기능' ? menuOpen : undefined}
               className={
                 `flex flex-col items-center justify-center focus:outline-none px-3 py-2 rounded-xl transition-all duration-200 shadow-md relative overflow-hidden ` +
                 (item.label === '기능'

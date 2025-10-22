@@ -38,14 +38,15 @@ function App() {
       <div className="md:hidden w-full">
         <MobileTopNav />
       </div>
-      {/* 다크모드 토글 버튼 (오른쪽 상단 고정, PC에서 업무메뉴와 겹치지 않게 top-20) */}
+      {/* 다크모드 토글 버튼: 모바일에서는 bottom-right, 데스크탑에서는 top-right */}
       <button
-  className="fixed bottom-4 right-4 z-40 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full p-2 shadow hover:scale-110 transition md:top-20 md:bottom-auto md:right-4 md:z-40"
+        className="fixed right-4 z-40 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full p-2 shadow hover:scale-110 transition bottom-[calc(4rem+env(safe-area-inset-bottom))] md:top-20 md:bottom-auto md:right-6"
         onClick={handleDarkModeToggle}
         aria-label="다크모드 토글"
       >
         🌙/☀️
       </button>
+  <main id="main" role="main" className="flex-1 pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-12">
       {/* 기능구성 버튼 샘플 */}
       <div className="flex gap-4 p-8 flex-wrap justify-center w-full">
         <button className="bg-btn-green text-navy font-bold px-4 py-2 rounded-lg shadow">운영관리</button>
@@ -77,6 +78,7 @@ function App() {
           <BusinessMenuModal open={menuOpen} onClose={() => setMenuOpen(false)} />
         </>
       )}
+      </main>
     </div>
   );
 }
